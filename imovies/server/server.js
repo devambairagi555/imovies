@@ -2,6 +2,9 @@ require('dotenv').config();
 const express = require('express'), mongoose = require('mongoose'), cors = require('cors');
 const app = express();
 app.use(cors(), express.json());
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' });
+});
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/movies', require('./routes/movies'));
 app.use('/api/bookings', require('./routes/bookings'));
